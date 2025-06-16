@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat|Oswald'>
+    <title>رعية مار انطونيوس البدواني برحليون </title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(51, 51, 51, 0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo img {
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero section with parallax */
+        .hero {
+            height: 100vh;
+            background-image: url('https://source.unsplash.com/random/1920x1080/?mountain,prayer');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #333;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ffec8b;
+            transform: scale(1.05);
+        }
+
+        /* Main content styles */
+        main {
+            padding: 4rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 66.67%; /* 3:2 aspect ratio */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contact form styles */
+        .contact-form {
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        /* Bible passage generator styles */
+        .bible-generator {
+            text-align: center;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .bible-generator button {
+            background-color: #ffd700;
+            color: #333;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .bible-generator button:hover {
+            background-color: #ffec8b;
+            transform: scale(1.05);
+        }
+
+        #bible-passage {
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+            transform: scale(1.2);
+        }
+
+        /* 3D effect for sections */
+        .section {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .section > * {
+            transform: translateZ(50px);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover > * {
+            transform: translateZ(75px);
+        }
+
+        /* Google Maps section */
+        .google-maps-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .google-maps-container {
+            width: 100%;
+            max-width: 600px;
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .business-info {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0,             0, 0.1);
+            text-align: center;
+        }
+
+        .business-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .business-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Animated logo */
+       
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Donation section */
+        .donation-section {
+            background-color: #f9f9f9;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .donation-button {
+            background-color: #ffd700;
+            color: #333;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .donation-button:hover {
+            background-color: #ffec8b;
+            transform: scale(1.05);
+        }
+
+        /* Social media icons */
+        .social-icons {
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            color: #333;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ffd700;
+        }
+
+        /* Mobile navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            z-index: 1500;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            .hero {
+                height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                font-size: 0.9rem;
+            }
+
+           
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="#home"><img src="https://www.devoutdecals.com/cdn/shop/products/st_anthony_1200x1200.png?v=1593196607" alt="Church Logo" border="0"></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">الصفحة الرئسية  </a></li>
+                    <li><a href="#about">عن تاريخ الكنيسة </a></li>
+                    <li><a href="#services">صور</a></li>
+                    <li><a href="#gallery">أخوية مار يوسف </a></li>
+                    <li><a href="tala2e3">طلائع العذراء</a></li>
+                     <li><a href="tala2e3">فرسان العذراء </a></li>
+                  
+                   
+                    <li><a href="https://www.google.com/maps/place/Mar+Antonios/@34.2585305,35.8773644,16z/data=!4m15!1m8!3m7!1s0x1521ff300e5a1c9b:0xf31bf51be6cc29c2!2sBarhalioun!3b1!8m2!3d34.2603309!4d35.8834116!16s%2Fg%2F120qcvbn!3m5!1s0x1521ff1969d95ee5:0xa38356eb95ab34fb!8m2!3d34.2597137!4d35.8755189!16s%2Fg%2F11rwphz2bp?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="fas fa-map-marker-alt"></i> Visit Us</a></li>
+                </ul>
+                <div class="mobile-nav-toggle"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Animated logo -->
+    <img src="https://www.devoutdecals.com/cdn/shop/products/st_anthony_1200x1200.png?v=1593196607" style="width: 200px; height: 200px;" alt="Church Logo" class="animated-logo">
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>رعية مار انطونيوس البدواني </h1>
+                <p>برحليون - قضاء بشري </p>
+                <a href="#services" class="cta-button">توصيات الأحد </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <div class="container">
+                <h2></h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-bible"></i>
+                        <h3>17/6/2025</h3>
+                        <p>انتقل الى رحمته تعالى في المهجر 
+
+المرحوم يوسف منصور ليشع داغر 
+
+يقام القداس مع وضع البخور لراحة نفسه
+في مار انطونيوس البادواني- برحليون 
+
+يوم السبت القادم
+ الواقع في ٢١ حزيران الجاري
+ الساعة 5:30  مساءً
+</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-bible"></i>
+                        <h3>Community Outreach</h3>
+                        <p>Helping those in need in our community</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-bible"></i>
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-bible"></i>
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section" id="gallery">
+            <div class="container">
+                <h2> 2025 عيد مار انطونيوس البدواني </h2>
+                <div class="gallery">
+                    <div class="gallery-item"><img src="WhatsApp Image 2025-06-16 at 10.58.02_8135c2bc.jpg" alt="Gallery Image 1">
+                                                                       
+                    </div>
+                    <div class="gallery-item">
+                        <img src="WhatsApp Image 2025-06-16 at 10.58.02_e2559050.jpg" alt="Gallery Image 2">
+                    </div>
+                     <div class="gallery-item">
+                        <img src="WhatsApp Image 2025-06-16 at 10.58.04_0e7302ab.jpg" alt="Gallery Image 3">
+                </div>
+
+                <video width="260px" height="177px" style="border-radius: 10px;" controls>
+  <source src="FDownloader.Net_AQN0yaR7Bnx9EK_ZCzrWMYUrLySPd4nqFSgjGMeCV_SkLw_YPEmDbgdOuLi3U30iczQ-xp1x0cFLyoxIuLaesuF_R4skAivD6anVn_CX73Vye2t4hxU_360p_(SD).mp4" onclick="myFunction()" type="video/mp4">
+</video>
+
+</div>
+            </div>
+        </section>
+
+                                                
+       
+
+      
+
+       
+
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/p/%D8%B1%D8%B9%D9%8A%D8%A9-%D9%85%D8%A7%D8%B1-%D8%A7%D9%86%D8%B7%D9%88%D9%86%D9%8A%D9%88%D8%B3-%D8%A8%D8%B1%D8%AD%D9%84%D9%8A%D9%88%D9%86-100064871796732/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    
+                </div>
+            </div>
+        </section>
+
+       
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="container">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/p/%D8%B1%D8%B9%D9%8A%D8%A9-%D9%85%D8%A7%D8%B1-%D8%A7%D9%86%D8%B7%D9%88%D9%86%D9%8A%D9%88%D8%B3-%D8%A8%D8%B1%D8%AD%D9%84%D9%8A%D9%88%D9%86-100064871796732/" target="_blank"><i class="fab fa-facebook"></i></a>
+                  
+                </div>
+                <p>&copy; رعية مار انطونيوس البدواني برحليون 2025</p>
+            </div>
+        </footer>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="https://maps.app.goo.gl/CDej1Wg9Q98RJAz8A" target="_blank">Visit Us</a></li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Function to generate random Bible passage (example function)
+        function generateBiblePassage() {
+            const passages = [
+                "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16",
+                "The Lord is my shepherd, I lack nothing. - Psalm 23:1",
+                "I can do all this through him who gives me strength. - Philippians 4:13"
+            ];
+            const randomIndex = Math.floor(Math.random() * passages.length);
+            document.getElementById('bible-passage').textContent = passages[randomIndex];
+        }
+    </script>
+
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>
