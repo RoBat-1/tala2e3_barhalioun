@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat|Oswald'>
-    <title>طلائع العذراء - برحليون </title>
-</head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>طلائع العذراء - برحليون</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         /* Reset and base styles */
         * {
@@ -18,10 +17,11 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f4f4f4;
+            direction: rtl;
         }
 
         .container {
@@ -32,10 +32,11 @@
 
         /* Header styles */
         header {
-            background-color: #151629;
+            background: linear-gradient(135deg, #151629, #2a2d5a);
             position: fixed;
             width: 100%;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -45,35 +46,66 @@
             padding: 1rem 0;
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .logo img {
             height: 60px;
+            width: 60px;
             border-radius: 50%;
+            border: 3px solid #ffd700;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            color: #ffd700;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
+            gap: 1.5rem;
         }
 
         nav ul li a {
-            color: #fff;
-            text-decoration: none;
+            color: #fff !important;
+            text-decoration: none !important;
             font-size: 1rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
         }
 
         nav ul li a:hover {
-            color: #ffd700;
+            color: #ffd700 !important;
+            background-color: rgba(255, 215, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Hero section with parallax */
         .hero {
             height: 100vh;
-            background-image: url('https://source.unsplash.com/random/1920x1080/?mountain,prayer');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -86,35 +118,52 @@
         }
 
         .hero-content {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 2rem;
-            border-radius: 10px;
+            background: rgba(21, 22, 41, 0.8);
+            padding: 3rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            font-family: 'Amiri', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: #ab0132;
-            color: #333;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
+            background: linear-gradient(135deg, #ffd700, #ffec8b);
+            color: #333 !important;
+            padding: 1rem 2rem;
+            text-decoration: none !important;
+            border-radius: 50px;
             font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            border: 2px solid #ffd700;
+            cursor: pointer;
+            text-align: center;
+            min-width: 150px;
         }
 
         .cta-button:hover {
-            background-color: #ab0132;
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #ffec8b, #ffd700);
+            color: #000 !important;
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
         }
 
         /* Main content styles */
@@ -131,250 +180,196 @@
 
         .section h2 {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             text-align: center;
+            font-family: 'Amiri', serif;
+            color: #151629;
         }
 
         /* Services grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            width: 100%;
         }
 
         .service-card {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(145deg, #fff, #f8f9fa);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .service-card i {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #ffd700;
             margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #151629;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
         }
 
         /* Gallery styles */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
         }
 
         .gallery-item {
             position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 66.67%; /* 3:2 aspect ratio */
+            border-radius: 15px;
             overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #e0e0e0, #f5f5f5);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .gallery-placeholder {
+            color: #999;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         /* Contact form styles */
         .contact-form {
             max-width: 600px;
             width: 100%;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(145deg, #fff, #f8f9fa);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: border-color 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #ffd700;
         }
 
         .contact-form button {
-            background-color: #333;
-            color: #fff;
+            background: linear-gradient(135deg, #151629, #2a2d5a);
+            color: #fff !important;
             border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+            padding: 1rem 2rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
         }
 
         .contact-form button:hover {
-            background-color: #555;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(21, 22, 41, 0.3);
+            background: linear-gradient(135deg, #2a2d5a, #3a3d6a);
         }
 
-        /* Bible passage generator styles */
-        .bible-generator {
-            text-align: center;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .contact-form button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(21, 22, 41, 0.2);
         }
 
-        .bible-generator button {
-            background-color: #151629;
-            color: #333;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .bible-generator button:hover {
-            background-color: #bd2626;
-            transform: scale(1.05);
-        }
-
-        #bible-passage {
-            margin-top: 1rem;
-            font-style: italic;
+        .contact-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* Footer styles */
         footer {
-            background-color: #151629;
+            background: linear-gradient(135deg, #151629, #2a2d5a);
             color: #fff;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
         }
 
-        .social-links a {
-            color: #fff;
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #ffd700;
-            transform: scale(1.2);
-        }
-
-        /* 3D effect for sections */
-        .section {
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .section > * {
-            transform: translateZ(50px);
-            transition: transform 0.3s ease;
-        }
-
-        .section:hover > * {
-            transform: translateZ(75px);
-        }
-
-        /* Google Maps section */
-        .google-maps-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .google-maps-container {
-            width: 100%;
-            max-width: 600px;
-            height: 450px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .business-info {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0,             0, 0.1);
-            text-align: center;
-        }
-
-        .business-info h3 {
-            font-size: 1.5rem;
+        .social-links {
             margin-bottom: 1rem;
         }
 
-        .business-info p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Animated logo */
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Donation section */
-        .donation-section {
-            background-color: #f9f9f9;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .donation-button {
-            background-color: #ffd700;
-            color: #333;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .donation-button:hover {
-            background-color: #ffec8b;
-            transform: scale(1.05);
-        }
-
-        /* Social media icons */
-        .social-icons {
-            margin-top: 2rem;
-        }
-
-        .social-icons a {
-            color: #333;
-            font-size: 1.5rem;
+        .social-links a {
+            color: #fff !important;
+            font-size: 2rem;
             margin: 0 1rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 0.8rem;
+            border-radius: 50%;
+            display: inline-block;
+            text-decoration: none !important;
         }
 
-        .social-icons a:hover {
-            color: #ffd700;
+        .social-links a:hover {
+            color: #ffd700 !important;
+            transform: scale(1.2) translateY(-3px);
+            background-color: rgba(255, 215, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .social-links a:active {
+            transform: scale(1.1);
         }
 
         /* Mobile navigation */
@@ -384,39 +379,62 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #333;
+            height: 100vh;
+            background: linear-gradient(135deg, #151629, #2a2d5a);
             z-index: 1500;
+            align-items: center;
+            justify-content: center;
         }
 
         .mobile-nav.active {
-            display: block;
+            display: flex;
         }
 
         .mobile-nav ul {
-            display: flex;
-            flex-direction: column;
             list-style: none;
-            padding: 2rem 0;
             text-align: center;
         }
 
         .mobile-nav ul li {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         .mobile-nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            display: inline-block;
+            min-width: 150px;
         }
 
         .mobile-nav ul li a:hover {
-            color: #ffd700;
+            color: #ffd700 !important;
+            background-color: rgba(255, 215, 0, 0.15);
+            transform: scale(1.05);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
         }
 
         /* Media queries */
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+            }
+
             .hero {
                 height: 80vh;
             }
@@ -426,14 +444,36 @@
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
 
-            .cta-button {
-                font-size: 0.9rem;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
 
+            .gallery {
+                grid-template-columns: 1fr;
+            }
 
+            .logo-text {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
         }
     </style>
 </head>
@@ -443,59 +483,70 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <a href="#home"><imgsrc="https://www.marantoniosalkabir.com/pages/%D8%A3%D8%AE%D9%88%D9%8A%D9%91%D8%A9-%D8%B7%D9%84%D8%A7%D8%A6%D8%B9-%D8%A7%D9%84%D8%B9%D8%B0%D8%B1%D8%A7%D8%A1/123-m.jpg"></a>            
-</div>
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Logo">
+                    <div class="logo-text">طلائع العذراء - برحليون</div>
+                </div>
                 <ul class="nav-links">
-
-
-                    <li><a href=""><i class="fa-solid fa-calendar" </a></li>
-  <li><a href="" class="fa-solid fa-camera" </a></li>
-
-
-
-                    <li><a href="https://www.google.com/maps/place/Mar+Antonios/@34.2585305,35.8773644,16z/data=!4m15!1m8!3m7!1s0x1521ff300e5a1c9b:0xf31bf51be6cc29c2!2sBarhalioun!3b1!8m2!3d34.2603309!4d35.8834116!16s%2Fg%2F120qcvbn!3m5!1s0x1521ff1969d95ee5:0xa38356eb95ab34fb!8m2!3d34.2597137!4d35.8755189!16s%2Fg%2F11rwphz2bp?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="fas fa-map-marker-alt"></i></a></li>
+                    <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="#events"><i class="fas fa-calendar"></i> الفعاليات</a></li>
+                    <li><a href="#gallery"><i class="fas fa-camera"></i> المعرض</a></li>
+                    <li><a href="https://www.google.com/maps/place/Mar+Antonios/@34.2585305,35.8773644,16z/data=!4m15!1m8!3m7!1s0x1521ff300e5a1c9b:0xf31bf51be6cc29c2!2sBarhalioun!3b1!8m2!3d34.2603309!4d35.8834116!16s%2Fg%2F120qcvbn!3m5!1s0x1521ff1969d95ee5:0xa38356eb95ab34fb!8m2!3d34.2597137!4d35.8755189!16s%2Fg%2F11rwphz2bp?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="fas fa-map-marker-alt"></i> الموقع</a></li>
                 </ul>
-
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </nav>
         </div>
     </header>
 
-    <!-- Animated logo -->
-
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+        <div class="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#events">الفعاليات</a></li>
+            <li><a href="#gallery">المعرض</a></li>
+            <li><a href="https://www.google.com/maps/place/Mar+Antonios/@34.2585305,35.8773644,16z" target="_blank">زيارتنا</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>You can always </h1>
-               <p>Check our </p>
-                <a href="#services" class="cta-button">Events </a>
+                <h1>أهلاً وسهلاً بكم</h1>
+                <p>في موقع طلائع العذراء - برحليون</p>
+                <a href="#events" class="cta-button">تصفح الفعاليات</a>
             </div>
         </div>
     </section>
 
     <!-- Main Content -->
     <main>
-        <!-- Services Section -->
-        <section class="section" id="services">
+        <!-- Events Section -->
+        <section class="section" id="events">
             <div class="container">
-                <h2></h2>
+                <h2>الفعاليات القادمة</h2>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-calendar"></i>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-calendar-alt"></i>
                         <h3>5/10/2025</h3>
-                        <p>اللقاء العام لأخوية طلائع العذراء في لبنان </p>
-<p><i class="fa-solid fa-map-marker-alt"></p>
+                        <p>اللقاء العام لأخوية طلائع العذراء في لبنان</p>
+                        <p><i class="fas fa-map-marker-alt"></i> مار أنطونيوس - برحليون</p>
                     </div>
-                    <div class="service-card">
-
-                        <h3></h3>
-                        <p></p>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-pray"></i>
+                        <h3>صلاة الجماعة</h3>
+                        <p>لقاء أسبوعي للصلاة والتأمل مع أعضاء الأخوية</p>
+                        <p><i class="fas fa-clock"></i> كل يوم أحد - 6:00 مساءً</p>
                     </div>
-                    <div class="service-card">
-
-                        <h3></h3>
-                        <p></p>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>أنشطة خيرية</h3>
+                        <p>مشاريع خدمة المجتمع ومساعدة الأسر المحتاجة</p>
+                        <p><i class="fas fa-heart"></i> خدمة مستمرة</p>
                     </div>
                 </div>
             </div>
@@ -504,83 +555,70 @@
         <!-- Gallery Section -->
         <section class="section" id="gallery">
             <div class="container">
-                <h2> اللقاء العام لأخوية طلائع العذراء في لبنان 2025</h2>
+                <h2>اللقاء العام لأخوية طلائع العذراء في لبنان 2025</h2>
                 <div class="gallery">
-                    <div class="gallery-item"><img src="" alt="Gallery Image 1">
-
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="صورة من اللقاء العام">
                     </div>
                     <div class="gallery-item">
-                        <img src="" alt="Gallery Image 2">
+                        <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="أعضاء الأخوية">
                     </div>
-                     <div class="gallery-item">
-                        <img src="" alt="Gallery Image 3">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="فعاليات الأخوية">
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls poster="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                <source src="#" type="video/mp4">
+                                <div class="gallery-placeholder">
+                                    <i class="fas fa-video" style="font-size: 2rem; color: #999;"></i>
+                                    <p>فيديو من الفعاليات</p>
+                                </div>
+                            </video>
+                        </div>
+                    </div>
                 </div>
-
-                <video width="260px" height="177px" style="border-radius: 10px;" controls>
-  <source src="" onclick="myFunction()" type="video/mp4">
-</video>
-
-</div>
             </div>
         </section>
 
-
-
-
-
-
-
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <div class="container">
+                <h2>تواصل معنا</h2>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="الاسم الكامل" required>
+                        <input type="email" placeholder="البريد الإلكتروني" required>
+                        <input type="tel" placeholder="رقم الهاتف">
+                        <textarea rows="5" placeholder="رسالتك" required></textarea>
+                        <button type="submit">إرسال الرسالة</button>
+                    </form>
+                </div>
 
                 <!-- Social Media Icons -->
-                <div class="social-icons">
+                <div class="social-links" style="margin-top: 3rem;">
                     <a href="https://www.facebook.com/p/%D8%B1%D8%B9%D9%8A%D8%A9-%D9%85%D8%A7%D8%B1-%D8%A7%D9%86%D8%B7%D9%88%D9%86%D9%8A%D9%88%D8%B3-%D8%A8%D8%B1%D8%AD%D9%84%D9%8A%D9%88%D9%86-100064871796732/" target="_blank"><i class="fab fa-facebook"></i></a>
-
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </section>
-
-
-
-        <!-- Footer Section -->
-        <footer>
-            <div class="container">
-                <div class="social-links">
-                    <a href="https://www.facebook.com/p/%D8%B1%D8%B9%D9%8A%D8%A9-%D9%85%D8%A7%D8%B1-%D8%A7%D9%86%D8%B7%D9%88%D9%86%D9%8A%D9%88%D8%B3-%D8%A8%D8%B1%D8%AD%D9%84%D9%8A%D9%88%D9%86-100064871796732/" target="_blank"><i class="fab fa-facebook"></i></a>
-
-                </div>
-                <p>&copy; طلائع العذراء برحليون 2025</p>
-            </div>
-        </footer>
-
-        <!-- Mobile Navigation Menu -->
-        <div class="mobile-nav">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-
-                <li><a href="https://maps.app.goo.gl/CDej1Wg9Q98RJAz8A" target="_blank">Visit Us</a></li>
-            </ul>
-        </div>
-
     </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/p/%D8%B1%D8%B9%D9%8A%D8%A9-%D9%85%D8%A7%D8%B1-%D8%A7%D9%86%D8%B7%D9%88%D9%86%D9%8A%D9%88%D8%B3-%D8%A8%D8%B1%D8%AD%D9%84%D9%8A%D9%88%D9%86-100064871796732/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; طلائع العذراء برحليون 2025 - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script>
-        // Function to generate random Bible passage (example function)
-        function generateBiblePassage() {
-            const passages = [
-                "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16",
-                "The Lord is my shepherd, I lack nothing. - Psalm 23:1",
-                "I can do all this through him who gives me strength. - Philippians 4:13"
-            ];
-            const randomIndex = Math.floor(Math.random() * passages.length);
-            document.getElementById('bible-passage').textContent = passages[randomIndex];
-        }
-    </script>
-
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-</body>
-</html>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+     
